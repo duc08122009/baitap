@@ -15,7 +15,6 @@ body{font-family:Segoe UI, Roboto, "Helvetica Neue", Arial, sans-serif;backgroun
 .avatar{width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,var(--accent),#5a67d8);display:inline-flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:1.1rem;margin-bottom:.75rem}
 .card h3{margin:.25rem 0 .35rem}
 .card p{color:var(--muted);margin:0}
-.about{margin-top:1.75rem;padding:1rem;background:transparent}
 .site-footer{text-align:center;padding:1rem;color:var(--muted);font-size:.95rem}
 .toplink {
   position: fixed;
