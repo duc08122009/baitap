@@ -1,11 +1,24 @@
-:root{
-  --bg:#f7fafc;
-  --card:#ffffff;
-  --accent:#2b6cb0;
-  --muted:#6b7280;
+:root {
+  --bg: #f7fafc;
+  --card: #ffffff;
+  --accent: #2b6cb0;
+  --muted: #6b7280;
 }
-*{box-sizing:border-box}
-body{font-family:Segoe UI, Roboto, "Helvetica Neue", Arial, sans-serif;background:var(--bg);margin:0;color:#0f172a}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Segoe UI, Roboto, "Helvetica Neue", Arial, sans-serif;
+  margin: 0;
+  background: 
+    linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),  /* lớp mờ */
+    url("IMG_20250220_082131.jpeg") no-repeat center center fixed;
+  background-size: cover;
+  color: #fff;
+  min-height: 100vh;
+}
 .site-header{background:linear-gradient(90deg,var(--accent),#4c51bf);color:#fff;padding:2rem;text-align:center}
 .site-header h1{margin:0;font-size:1.8rem}
 .subtitle{opacity:.95;margin-top:.4rem}
