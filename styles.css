@@ -1,24 +1,11 @@
-:root {
-  --bg: #f7fafc;
-  --card: #ffffff;
-  --accent: #2b6cb0;
-  --muted: #6b7280;
+:root{
+  --bg:#f7fafc;
+  --card:#ffffff;
+  --accent:#2b6cb0;
+  --muted:#6b7280;
 }
-
-* {
-  box-sizing: border-box;
-}
-
-body {
-  font-family: Segoe UI, Roboto, "Helvetica Neue", Arial, sans-serif;
-  margin: 0;
-  background: 
-    linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),  /* lớp mờ */
-    url("IMG_20250220_082131.jpeg") no-repeat center center fixed;
-  background-size: cover;
-  color: #fff;
-  min-height: 100vh;
-}
+*{box-sizing:border-box}
+body{font-family:Segoe UI, Roboto, "Helvetica Neue", Arial, sans-serif;background:var(--bg);margin:0;color:#0f172a}
 .site-header{background:linear-gradient(90deg,var(--accent),#4c51bf);color:#fff;padding:2rem;text-align:center}
 .site-header h1{margin:0;font-size:1.8rem}
 .subtitle{opacity:.95;margin-top:.4rem}
@@ -28,43 +15,23 @@ body {
 .avatar{width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,var(--accent),#5a67d8);display:inline-flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:1.1rem;margin-bottom:.75rem}
 .card h3{margin:.25rem 0 .35rem}
 .card p{color:var(--muted);margin:0}
+.about{margin-top:1.75rem;padding:1rem;background:transparent}
 .site-footer{text-align:center;padding:1rem;color:var(--muted);font-size:.95rem}
+.toplink {
+  position: fixed;
+  top: 84px;
+  left: 16px;
+  background: transparent;
+  border: 0;
+  color: #1e40af;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: underline;
+  z-index: 1000; /* Thêm dòng này */
+}
+
 
 @media (max-width:480px){
-}
-.cube {
-  position: relative;
-  width: 80px;
-  height: 80px;
-  transform-style: preserve-3d;
-  transform: rotateX(-20deg) rotateY(30deg);
-  animation: rotateCube 6s infinite linear;
-  margin: 0 auto 10px;
-}
-
-.face {
-  position: absolute;
-  width: 80px;
-  height: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  font-size: 1.1rem;
-  color: #fff;
-  background: linear-gradient(135deg, #4c51bf, #2b6cb0);
-  border: 2px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-}
-
-.front  { transform: translateZ(40px); }
-.back   { transform: rotateY(180deg) translateZ(40px); }
-.left   { transform: rotateY(-90deg) translateZ(40px); }
-.right  { transform: rotateY(90deg) translateZ(40px); }
-.top    { transform: rotateX(90deg) translateZ(40px); }
-.bottom { transform: rotateX(-90deg) translateZ(40px); }
-
-@keyframes rotateCube {
-  from { transform: rotateX(-20deg) rotateY(0deg); }
-  to   { transform: rotateX(-20deg) rotateY(360deg); }
+  .site-header{padding:1.25rem}
+  .avatar{width:56px;height:56px}
 }
