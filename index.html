@@ -5,24 +5,136 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Trang chủ</title>
     <style>
-      body{font-family:Segoe UI, Roboto, Arial, sans-serif;margin:0;background:#f3f4f6;color:#0f172a}
-      /* Link moved to left and lower than the heading */
-      .toplink{position:fixed;top:84px;left:16px;right:auto;background:transparent;border:0;color:#1e40af;font-weight:700;cursor:pointer;text-decoration:underline;font-size:1rem}
-      /* Place heading near the top and center it */
-      .hero{display:flex;align-items:center;justify-content:flex-start;height:100vh;flex-direction:column;padding-top:48px}
-      .hero h1{font-size:2.4rem;margin:0;font-weight:800;text-align:center}
-      .hero p{margin:8px 0 0;color:#6b7280}
-      body {font-family: Segoe UI, Roboto, Arial, sans-serif;margin: 0;background: url("1-800x450-1.jpg") no-repeat center center fixed;background-size: cover;color: #fff;
-}
+      /* Reset */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Roboto, Arial, sans-serif;
+        background: url("1-800x450-1.jpg") no-repeat center center fixed;
+        background-size: cover;
+        color: #fff;
+        min-height: 100vh;
+        overflow: hidden;
+      }
+
+      /* Mờ nền để chữ dễ nhìn */
+      .overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.45);
+        backdrop-filter: blur(3px);
+      }
+
+      /* Nút link thành viên */
+      .toplink {
+        position: fixed;
+        top: 24px;
+        left: 24px;
+        background: rgba(255, 255, 255, 0.15);
+        color: #fff;
+        font-weight: 600;
+        font-size: 1rem;
+        padding: 10px 20px;
+        border-radius: 30px;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        cursor: pointer;
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+
+      .toplink:hover {
+        background: rgba(255, 255, 255, 0.3);
+        transform: scale(1.05);
+      }
+
+      /* Khu vực giữa */
+      .hero {
+        position: relative;
+        z-index: 2;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 0 20px;
+      }
+
+      .hero h1 {
+        font-size: 3rem;
+        font-weight: 800;
+        text-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
+        animation: fadeInDown 1.2s ease both;
+      }
+
+      .hero p {
+        margin-top: 12px;
+        font-size: 1.2rem;
+        color: #dbeafe;
+        animation: fadeInUp 1.2s ease both 0.5s;
+      }
+
+      /* Animation */
+      @keyframes fadeInDown {
+        from {
+          opacity: 0;
+          transform: translateY(-30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Sóng chuyển động nhẹ phía dưới */
+      .wave {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 200%;
+        height: 120px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        animation: waveAnim 6s infinite linear;
+      }
+
+      @keyframes waveAnim {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
     </style>
   </head>
   <body>
     <audio src="Iframe Lo-fi type beat - _Haru Haru_ (day by day) [nolWPN-tnOk].mp3" autoplay loop></audio>
-    <a class="toplink" href="thanhvien.html">thành viên</a>
+
+    <div class="overlay"></div>
+
+    <a class="toplink" href="thanhvien.html">Thành viên</a>
 
     <main class="hero">
-      <h1>Trang chủ</h1>
-      <p></p>
+      <h1>Chào mừng đến với Trang chủ</h1>
+      <p>Thư giãn cùng âm nhạc và không gian nhẹ nhàng</p>
     </main>
+
+    <div class="wave"></div>
   </body>
 </html>
