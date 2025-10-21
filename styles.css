@@ -60,7 +60,7 @@ body{font-family:Segoe UI, Roboto, "Helvetica Neue", Arial, sans-serif;backgroun
   display: inline-block;
   border-radius: 50%;
   overflow: hidden;
-  padding: 4px;
+  padding: 4px; 
   background: linear-gradient(45deg,
     red, orange, yellow, green, cyan, blue, violet, red);
   background-size: 400% 400%;
@@ -73,7 +73,7 @@ body{font-family:Segoe UI, Roboto, "Helvetica Neue", Arial, sans-serif;backgroun
   width: 120px;
   height: 120px;
   border-radius: 50%;
-  border: 2px solid #fff;
+  border: 2px solid #fff; 
 }
 
 @keyframes rainbowFlow {
