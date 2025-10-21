@@ -46,6 +46,47 @@
     </style>
   </head>
   <body>
+    <canvas id="snowCanvas"></canvas>
+<script>
+(function(){
+  const canvas=document.getElementById('snowCanvas');
+  const ctx=canvas.getContext('2d');
+  let width=0,height=0,DPR=Math.max(1,window.devicePixelRatio||1);
+  let flakes=[];
+  const config={count:180,speed:1,wind:0,sizeMin:1.2,sizeMax:4.2,opacityMin:0.4,opacityMax:1.0};
+  function createFlake(){
+    const size=Math.random()*(config.sizeMax-config.sizeMin)+config.sizeMin;
+    return{x:Math.random()*width,y:Math.random()*height-height,r:size,v:(Math.random()*0.6+0.2)*(size*0.4)*config.speed,swing:Math.random()*2*Math.PI,swingSpeed:Math.random()*0.02+0.002,opacity:Math.random()*(config.opacityMax-config.opacityMin)+config.opacityMin};
+  }
+  function initFlakes(){flakes.length=0;for(let i=0;i<config.count;i++)flakes.push(createFlake());}
+  function resize(){width=window.innerWidth;height=window.innerHeight;canvas.width=Math.round(width*DPR);canvas.height=Math.round(height*DPR);canvas.style.cssText='position:fixed;inset:0;pointer-events:none;z-index:1000;';ctx.setTransform(DPR,0,0,DPR,0,0);}
+  function drawFlake(f){
+    ctx.beginPath();
+    const g=ctx.createRadialGradient(f.x,f.y,0,f.x,f.y,f.r*1.8);
+    g.addColorStop(0,`rgba(255,255,255,${f.opacity})`);
+    g.addColorStop(0.7,`rgba(255,255,255,${f.opacity*0.6})`);
+    g.addColorStop(1,`rgba(255,255,255,0)`);
+    ctx.fillStyle=g;
+    ctx.arc(f.x,f.y,f.r,0,Math.PI*2);
+    ctx.fill();
+  }
+  function updateAndRender(){
+    ctx.clearRect(0,0,width,height);
+    for(let i=0;i<flakes.length;i++){
+      const f=flakes[i];
+      f.swing+=f.swingSpeed;
+      f.x+=Math.sin(f.swing)*0.6+config.wind;
+      f.y+=f.v;
+      if(f.y-f.r>height||f.x<-50||f.x>width+50){flakes[i]=createFlake();flakes[i].y=-10-Math.random()*50;flakes[i].x=Math.random()*width;}
+      drawFlake(f);
+    }
+    requestAnimationFrame(updateAndRender);
+  }
+  window.addEventListener('resize',()=>{resize();initFlakes();});
+  function start(){resize();initFlakes();requestAnimationFrame(updateAndRender);}start();
+})();
+</script>
+    
     <audio src="Iframe Nhạc TikTok_ Black Myth Wukong x Once Upon A Time (House Mix) (Max Oazo - Moonessa) [-nqEadirjmM].mp3" autoplay loop></audio>
 
     <div class="overlay"></div>
