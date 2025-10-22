@@ -166,3 +166,32 @@ body{font-family:Segoe UI, Roboto, "Helvetica Neue", Arial, sans-serif;backgroun
   80% { color: blue; }
   100% { color: violet; }
 }
+
+.avatar-spin {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: inline-block;
+  perspective: 800px; 
+}
+
+.avatar-spin img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border-radius: 50%;
+  transform-origin: 50% 50%;
+  animation: spin360 4s linear infinite;
+  backface-visibility: hidden;
+}
+
+.avatar-spin:hover img {
+  animation-play-state: paused;
+}
+
+/* keyframes */
+@keyframes spin360 {
+  from { transform: rotateY(0deg); }
+  to   { transform: rotateY(360deg); }
+}
