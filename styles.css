@@ -55,6 +55,56 @@ body{font-family:Segoe UI, Roboto, "Helvetica Neue", Arial, sans-serif;backgroun
   .site-header{padding:1.25rem}
   .avatar{width:56px;height:56px}
 }
+.avatar-flame {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.avatar-flame img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  position: relative;
+  z-index: 2;
+}
+
+.flame {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 120%;
+  height: 120%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,200,0,0.5) 20%, rgba(255,0,0,0) 70%);
+  animation: fireMove 1.5s ease-in-out infinite alternate;
+  mix-blend-mode: screen;
+  z-index: 1;
+}
+
+.flame:nth-child(2) {
+  animation-delay: 0.3s;
+  transform: scale(1.05) rotate(15deg);
+}
+
+.flame:nth-child(3) {
+  animation-delay: 0.6s;
+  transform: scale(0.95) rotate(-10deg);
+}
+
+@keyframes fireMove {
+  0% {
+    transform: scale(1) translateY(0);
+    filter: blur(6px) brightness(1.2);
+  }
+  100% {
+    transform: scale(1.1) translateY(-4px);
+    filter: blur(10px) brightness(1.6);
+  }
+}
 .card-rainbow {
   position: relative;
   border-radius: 20px;
