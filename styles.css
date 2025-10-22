@@ -55,57 +55,31 @@ body{font-family:Segoe UI, Roboto, "Helvetica Neue", Arial, sans-serif;backgroun
   .site-header{padding:1.25rem}
   .avatar{width:56px;height:56px}
 }
-.fire-border {
+.fire-effect {
   position: relative;
   display: inline-block;
   border-radius: 50%;
   overflow: hidden;
-  box-shadow: 0 0 25px rgba(255, 100, 0, 0.3);
 }
 
-.fire-border img {
+.fire-effect img {
   width: 120px;
   height: 120px;
   border-radius: 50%;
-  display: block;
+  position: relative;
+  z-index: 2;
 }
 
-.fire-border::before {
+.fire-effect::after {
   content: "";
   position: absolute;
-  inset: -3px;
+  inset: -8px;
   border-radius: 50%;
-  background: conic-gradient(
-    from 0deg,
-    #ff0000,
-    #ff9900,
-    #ffff00,
-    #ff6600,
-    #ff0000
-  );
-  filter: blur(6px);
-  animation: fireFlow 2s linear infinite;
-  z-index: 0;
-}
-
-.fire-border::after {
-  content: "";
-  position: absolute;
-  inset: -5px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(255,140,0,0.5) 0%, transparent 70%);
-  animation: fireGlow 1.5s ease-in-out infinite alternate;
-  z-index: 0;
-}
-
-@keyframes fireFlow {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-@keyframes fireGlow {
-  from { opacity: 0.4; transform: scale(1); }
-  to { opacity: 0.8; transform: scale(1.1); }
+  background: url('https://i.gifer.com/origin/8b/8b4c5b0f1d3c9a29c47d3c841bb27cc3_w200.gif') center/cover no-repeat;
+  z-index: 1;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  filter: brightness(1.2) saturate(1.5);
 }
 .card-rainbow {
   position: relative;
