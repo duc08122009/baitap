@@ -122,32 +122,17 @@ body{font-family:Segoe UI, Roboto, "Helvetica Neue", Arial, sans-serif;backgroun
   100% { background-position: 0% 50%; }
 }
 .rainbow-text {
-  background: linear-gradient(
-    90deg,
-    red,
-    orange,
-    yellow,
-    green,
-    cyan,
-    blue,
-    violet,
-    red
-  );
-  background-size: 400%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: rainbowMove 5s linear infinite;
+  color: red;
+  animation: flashRainbow 1.2s infinite;
   font-weight: 700;
 }
 
-@keyframes rainbowMove {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+@keyframes flashRainbow {
+  0% { color: red; }
+  16% { color: orange; }
+  32% { color: yellow; }
+  48% { color: green; }
+  64% { color: cyan; }
+  80% { color: blue; }
+  100% { color: violet; }
 }
