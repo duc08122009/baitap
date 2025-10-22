@@ -153,7 +153,7 @@ body{font-family:Segoe UI, Roboto, "Helvetica Neue", Arial, sans-serif;backgroun
 
 .rainbow-text-3 {
   color: red;
-  animation: flashRainbow 1.2s infinite;
+  animation: flashRainbow 1.5s infinite;
   font-weight: 700;
 }
 
