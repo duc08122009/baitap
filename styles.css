@@ -148,3 +148,18 @@ body{font-family:Segoe UI, Roboto, "Helvetica Neue", Arial, sans-serif;backgroun
 @keyframes spinRainbow {
   to { transform: rotate(360deg); }
 }
+.rainbow-text-3 {
+  color: red;
+  animation: flashRainbow 2s infinite;
+  font-weight: 700;
+}
+
+@keyframes flashRainbow {
+  0% { color: red; }
+  16% { color: orange; }
+  32% { color: yellow; }
+  48% { color: green; }
+  64% { color: cyan; }
+  80% { color: blue; }
+  100% { color: violet; }
+}
