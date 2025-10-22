@@ -3,25 +3,22 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Thành viên</title>
+    <title>thành viên</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <header class="site-header">
-      <h1>Thiết kế Website</h1>
+      <h1>Bài tập Web</h1>
       <p class="subtitle">Danh sách thành viên nhóm</p>
     </header>
 
     <main class="container">
       <section class="members">
-        <article class="card card-rainbow">
-          <div class="avatar-glitch">
-    <img src="IMG_20250220_082131.jpeg" alt="Lê Thành Long">
-          </div>
-  <h3 class="rainbow-text-3">Lê Thành Long</h3>
-  <p class="rainbow-text">Thành viên nhóm</p>
-</article>
-
+        <article class="card">
+          <img class="avatar" src="IMG_20250220_082131.jpeg" alt="Lê Thành Long">
+          <h3>Lê Thành Long</h3>
+          <p>Thành viên nhóm</p>
+        </article>
 
         <article class="card">
           <img class="avatar" src="ngy t.jpg" alt="Nguyễn Anh Đức">
@@ -66,12 +63,50 @@
         </article>
       </section>
     </main>
-    <a href="index.html" class="rainbow-text-2">← Quay về trang chủ</a>
+    <a href="index.html" class="back-btn">← Quay về trang chủ</a>
     <footer class="site-footer">
-      <audio src="Iframe 2AM (DuongAlex ft. Hasu Remix) - JustaTee x Big Daddy _ Nhạc Việt TikTok Remix 2025 [L55YolihVOA].mp3" autoplay loop></audio>
-
-    <div class="overlay"></div>
       <p>© Nhóm 5</p>
     </footer> 
   </body>
+  <canvas id="crack"></canvas>
+<script>
+const c=document.getElementById('crack'),x=c.getContext('2d');
+let W=innerWidth,H=innerHeight; 
+c.width=W; c.height=H;
+function r(a,b){return Math.random()*(b-a)+a}
+class Crack {
+  constructor(){this.reset()}
+  reset(){
+    this.x=W/2;this.y=H/2;this.len=r(40,120);
+    this.ang=r(0,2*Math.PI);this.life=r(30,60);
+    this.color=`hsl(${r(180,260)},100%,70%)`;
+  }
+  update(){
+    this.x+=Math.cos(this.ang)*r(4,8);
+    this.y+=Math.sin(this.ang)*r(4,8);
+    this.life--;
+    if(this.life<0)this.reset();
+  }
+  draw(){
+    x.beginPath();
+    x.moveTo(this.x,this.y);
+    x.lineTo(this.x-Math.cos(this.ang)*this.len,this.y-Math.sin(this.ang)*this.len);
+    x.strokeStyle=this.color;
+    x.lineWidth=r(1,3);
+    x.shadowColor=this.color;
+    x.shadowBlur=10;
+    x.stroke();
+  }
+}
+let cracks=[];
+for(let i=0;i<50;i++)cracks.push(new Crack());
+function loop(){
+  x.fillStyle="rgba(0,0,0,0.1)";
+  x.fillRect(0,0,W,H);
+  cracks.forEach(c=>{c.update();c.draw();});
+  requestAnimationFrame(loop);
+}
+loop();
+addEventListener('resize',()=>{W=innerWidth;H=innerHeight;c.width=W;c.height=H;});
+</script>
 </html>
