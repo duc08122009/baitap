@@ -55,44 +55,6 @@ body{font-family:Segoe UI, Roboto, "Helvetica Neue", Arial, sans-serif;backgroun
   .site-header{padding:1.25rem}
   .avatar{width:56px;height:56px}
 }
-.avatar-fire {
-  position: relative;
-  display: inline-block;
-  border-radius: 50%;
-  overflow: hidden;
-}
-
-.avatar-fire img {
-  display: block;
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  border: 3px solid transparent;
-  position: relative;
-  z-index: 1;
-}
-
-.avatar-fire::before {
-  content: "";
-  position: absolute;
-  inset: -4px; 
-  border-radius: 50%;
-  background: conic-gradient(
-    from 0deg,
-    #ff0000,
-    #ff7b00,
-    #ffff00,
-    #ff0000
-  );
-  filter: blur(8px) brightness(1.5);
-  animation: fireSpin 2.5s linear infinite;
-  z-index: 0;
-}
-
-@keyframes fireSpin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
 .card-rainbow {
   position: relative;
   border-radius: 20px;
