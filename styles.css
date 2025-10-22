@@ -136,3 +136,15 @@ body{font-family:Segoe UI, Roboto, "Helvetica Neue", Arial, sans-serif;backgroun
   50% { background-position: 100% 50%; filter: brightness(1.5); }
   100% { background-position: 0% 50%; filter: brightness(1); }
 }
+.rainbow-text 2 {
+  background: conic-gradient(from 0deg, red, orange, yellow, green, cyan, blue, violet, red);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: spinRainbow 6s linear infinite;
+  font-weight: 700;
+}
+
+@keyframes spinRainbow {
+  to { transform: rotate(360deg); }
+}
