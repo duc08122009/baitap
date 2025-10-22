@@ -106,3 +106,72 @@
     <div class="wave"></div>
   </body>
 </html>
+<canvas id="stageLights"></canvas>
+
+<script>
+const canvas = document.getElementById('stageLights');
+const ctx = canvas.getContext('2d');
+let W = window.innerWidth, H = window.innerHeight;
+canvas.width = W; canvas.height = H;
+
+class Laser {
+  constructor() {
+    this.reset();
+  }
+  reset() {
+    this.x = Math.random() * W;
+    this.y = Math.random() * H / 2;
+    this.len = 0;
+    this.ang = Math.random() * Math.PI * 2;
+    this.speed = 2 + Math.random() * 2;
+    this.hue = Math.floor(Math.random() * 360);
+    this.opacity = 0.4 + Math.random() * 0.5;
+  }
+  update() {
+    this.len += this.speed;
+    if (this.len > 250) this.reset();
+  }
+  draw() {
+    ctx.save();
+    ctx.globalCompositeOperation = "lighter";
+    const grad = ctx.createLinearGradient(this.x, this.y, this.x + Math.cos(this.ang)*this.len, this.y + Math.sin(this.ang)*this.len);
+    grad.addColorStop(0, `hsla(${this.hue},100%,60%,${this.opacity})`);
+    grad.addColorStop(1, `hsla(${this.hue},100%,50%,0)`);
+    ctx.strokeStyle = grad;
+    ctx.lineWidth = 2 + Math.random() * 3;
+    ctx.beginPath();
+    ctx.moveTo(this.x, this.y);
+    ctx.lineTo(this.x + Math.cos(this.ang)*this.len, this.y + Math.sin(this.ang)*this.len);
+    ctx.stroke();
+    ctx.restore();
+  }
+}
+
+const lasers = Array.from({length: 40}, () => new Laser());
+
+function drawSpotlights() {
+  for (let i = 0; i < 5; i++) {
+    const grad = ctx.createRadialGradient(W/2 + Math.sin(Date.now()/1000 + i)*400, H/2, 0, W/2, H/2, W);
+    grad.addColorStop(0, `hsla(${(i*60 + Date.now()/20)%360},100%,55%,0.25)`);
+    grad.addColorStop(1, "transparent");
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, W, H);
+  }
+}
+
+function loop() {
+  ctx.fillStyle = "rgba(0,0,0,0.15)";
+  ctx.fillRect(0, 0, W, H);
+  drawSpotlights();
+  lasers.forEach(l => { l.update(); l.draw(); });
+  requestAnimationFrame(loop);
+}
+loop();
+
+window.addEventListener('resize', () => {
+  W = window.innerWidth;
+  H = window.innerHeight;
+  canvas.width = W;
+  canvas.height = H;
+});
+</script>
