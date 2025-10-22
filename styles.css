@@ -55,31 +55,43 @@ body{font-family:Segoe UI, Roboto, "Helvetica Neue", Arial, sans-serif;backgroun
   .site-header{padding:1.25rem}
   .avatar{width:56px;height:56px}
 }
-.fire-effect {
+.avatar-fire {
   position: relative;
   display: inline-block;
   border-radius: 50%;
   overflow: hidden;
 }
 
-.fire-effect img {
+.avatar-fire img {
+  display: block;
   width: 120px;
   height: 120px;
   border-radius: 50%;
+  border: 3px solid transparent;
   position: relative;
-  z-index: 2;
+  z-index: 1;
 }
 
-.fire-effect::after {
+.avatar-fire::before {
   content: "";
   position: absolute;
-  inset: -8px;
+  inset: -4px; 
   border-radius: 50%;
-  background: url('https://i.gifer.com/origin/8b/8b4c5b0f1d3c9a29c47d3c841bb27cc3_w200.gif') center/cover no-repeat;
-  z-index: 1;
-  pointer-events: none;
-  mix-blend-mode: screen;
-  filter: brightness(1.2) saturate(1.5);
+  background: conic-gradient(
+    from 0deg,
+    #ff0000,
+    #ff7b00,
+    #ffff00,
+    #ff0000
+  );
+  filter: blur(8px) brightness(1.5);
+  animation: fireSpin 2.5s linear infinite;
+  z-index: 0;
+}
+
+@keyframes fireSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 .card-rainbow {
   position: relative;
